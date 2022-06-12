@@ -4,7 +4,9 @@ You can use this file to perform app-level initialization, but the primary
 purpose of the file is to pass control to the app’s first page.
 */
 
-import { svelteNativeNoFrame } from 'svelte-native'
-import App from './App.svelte'
+import Elm from './Main.elm'
+import { svelteNativeNoFrameCallback } from 'elm-nativescript'
 
-svelteNativeNoFrame(App, {})
+const render = (node: any) => Elm().Main.init({ node: node })
+
+svelteNativeNoFrameCallback(render, {})
